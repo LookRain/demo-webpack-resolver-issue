@@ -2,7 +2,7 @@
 class BoxWebpackResolverPlugin {
   constructor(source, target) {
     this.source = 'resolve';
-    this.target = 'internalResolvee';
+    this.target = 'internalResolve';
   }
 
   apply(resolver) {
@@ -13,6 +13,8 @@ class BoxWebpackResolverPlugin {
         'BoxResolverPlugin',
         (request, resolveContext, callback) => {
           if (request.request.startsWith('@box')) {
+
+
             const req = request.request.replace('@box/', '');
             const newReq = Object.assign({}, request, {
               request: './src/_box/' + req,
